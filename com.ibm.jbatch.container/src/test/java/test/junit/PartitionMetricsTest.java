@@ -124,7 +124,7 @@ public class PartitionMetricsTest {
 		Metric[] metrics = step1Exec1.getMetrics();
 
 		// 3 partitions of 10 elements - for each partition, 6 will be written and 4 will be filtered, this will be 2 chunks (item-count=5) + 1 zero-item chunk
-		assertEquals("commit count", 9, getMetricVal(metrics, Metric.MetricType.COMMIT_COUNT));
+		assertEquals("commit count", /*9*/6, getMetricVal(metrics, Metric.MetricType.COMMIT_COUNT));
 		assertEquals("filter count", 12, getMetricVal(metrics, Metric.MetricType.FILTER_COUNT));
 		assertEquals("read count", 30, getMetricVal(metrics, Metric.MetricType.READ_COUNT));
 		assertEquals("write count", 18, getMetricVal(metrics, Metric.MetricType.WRITE_COUNT));
@@ -132,7 +132,7 @@ public class PartitionMetricsTest {
 		Metric[] metrics2 = step1Exec2.getMetrics();
 
 		// 3 partitions of 25 elements - for each partition, 15 will be written and 10 will be filtered, this will be 5 chunks (item-count=5) + 1 zero-item chunk
-		assertEquals("commit count", 18, getMetricVal(metrics2, Metric.MetricType.COMMIT_COUNT));
+		assertEquals("commit count", /*18*/12, getMetricVal(metrics2, Metric.MetricType.COMMIT_COUNT));
 		assertEquals("filter count", 30, getMetricVal(metrics2, Metric.MetricType.FILTER_COUNT));
 		assertEquals("read count", 75, getMetricVal(metrics2, Metric.MetricType.READ_COUNT));
 		assertEquals("write count", 45, getMetricVal(metrics2, Metric.MetricType.WRITE_COUNT));			
@@ -207,7 +207,7 @@ public class PartitionMetricsTest {
 		Metric[] metrics = step1Exec.getMetrics();
 
 		// 3 partitions of 15 elements - for each partition, 9 will be written and 6 will be filtered, this will be 3 chunks (item-count=5) + 1 zero-item chunk
-		assertEquals("commit count", 12, getMetricVal(metrics, Metric.MetricType.COMMIT_COUNT));
+		assertEquals("commit count", /*12*/6, getMetricVal(metrics, Metric.MetricType.COMMIT_COUNT));
 		assertEquals("filter count", 18, getMetricVal(metrics, Metric.MetricType.FILTER_COUNT));
 		assertEquals("read count", 45, getMetricVal(metrics, Metric.MetricType.READ_COUNT));
 		assertEquals("write count", 27, getMetricVal(metrics, Metric.MetricType.WRITE_COUNT));
@@ -215,7 +215,7 @@ public class PartitionMetricsTest {
 		Metric[] metrics2 = step2Exec.getMetrics();
 
 		// 3 partitions of 20 elements - for each partition, 12 will be written and 8 will be filtered, this will be 4 chunks (item-count=5) + 1 zero-item chunk
-		assertEquals("commit count", 15, getMetricVal(metrics2, Metric.MetricType.COMMIT_COUNT));
+		assertEquals("commit count", /*15*/9, getMetricVal(metrics2, Metric.MetricType.COMMIT_COUNT));
 		assertEquals("filter count", 24, getMetricVal(metrics2, Metric.MetricType.FILTER_COUNT));
 		assertEquals("read count", 60, getMetricVal(metrics2, Metric.MetricType.READ_COUNT));
 		assertEquals("write count", 36, getMetricVal(metrics2, Metric.MetricType.WRITE_COUNT));				

@@ -286,7 +286,7 @@ public class ChunkStepControllerImpl extends SingleThreadedStepControllerImpl {
 			// The spec, in Sec. 11.10, Chunk with Custom Checkpoint Processing, clearly
 			// outlines that this gets called even when we've already read a null (which
 			// arguably is pointless).   But we'll follow the spec.
-			if (checkpointManager.isReadyToCheckpoint()) {
+			if (!currentItemStatus.isFiltered() && checkpointManager.isReadyToCheckpoint()) {
 				break;
 			}
 
